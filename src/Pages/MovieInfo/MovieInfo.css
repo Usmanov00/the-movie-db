@@ -1,0 +1,96 @@
+.background-info{
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*background-image:url("https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/rl49Qr4KbfTSYjXYAN8fMDIt2xS.jpg");*/
+
+}
+
+.background-custom{
+    padding: 30px 0;
+    /*background-image: linear-gradient(to right, rgba(10.5, 31.5, 52.5, 1) 150px, rgba(10.5, 31.5, 52.5, 0.84) 100%);*/
+
+}
+
+.poster-wrapper-img img{
+    border-radius: 8px;
+}
+
+.poster {
+    display: flex;
+}
+
+.poster-info {
+    padding-left: 40px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: center;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+.poster-info-title{
+    font-weight: 700;
+    font-size: 34px;
+}
+
+.poster-info span {
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+.facts {
+    display: flex;
+}
+
+.certification {
+    border: 1px solid rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.6);
+    margin-right: 5px;
+}
+
+.release span{
+    text-transform: uppercase;
+    margin-right: 5px;
+}
+
+.runtime{
+    margin-left: 5px;
+}
+
+.auto{
+    color: #fff;
+}
+
+.chart {
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 68px;
+}
+
+.chart-rating {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgb(3, 37, 65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart span {
+    font-weight: 700;
+    margin-left: 6px;
+    white-space: pre-line;
+}
+
+.addToList {
+    box-sizing: border-box;
+    background: rgba(3, 37, 65);
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+}

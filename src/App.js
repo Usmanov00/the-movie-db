@@ -1,16 +1,16 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Homepage from "./Components/Homepage";
+import Homepage from "./Pages/Homepage";
 import Header from "./Components/Header";
+import MovieInfo from "./Pages/MovieInfo";
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      <div className="container">
-        <Routes>
-          <Route to={"/"} element={<Homepage/>}/>
-        </Routes>
-      </div>
+      <Routes>
+        <Route path={"/"} element={<Homepage/>}/>
+        <Route path={"/movie/:id"} element={<MovieInfo />}/>
+      </Routes>
     </BrowserRouter>
   );
 }
