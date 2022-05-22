@@ -41,6 +41,7 @@
 
 .facts {
     display: flex;
+    margin-bottom: 24px;
 }
 
 .certification {
@@ -60,6 +61,11 @@
 
 .auto{
     color: #fff;
+    display: flex;
+    justify-content: start;
+    text-align: center;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .chart {
@@ -69,6 +75,7 @@
     justify-content: center;
     box-sizing: border-box;
     height: 68px;
+    margin-right: 20px;
 }
 
 .chart-rating {
@@ -87,10 +94,43 @@
     white-space: pre-line;
 }
 
-.addToList {
+.configuration{
     box-sizing: border-box;
     background: rgba(3, 37, 65);
     border-radius: 50%;
     width: 46px;
     height: 46px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
+
+.chart-play img{
+    -webkit-filter: invert(100%);
+    color: #fff;
+}
+.chart-play span {
+    margin-left: 0;
+}
+
+.poster-info-box {
+
+}
+
+.tagline {
+    margin-bottom: 0;
+    font-size: 1.1em;
+    font-weight: 400;
+    font-style: italic;
+    opacity: 0.7;
+
+}
+
+.overview {
+    margin: 10px 0;
+}
+
+
+

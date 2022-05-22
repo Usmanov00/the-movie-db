@@ -1,7 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {Link, useParams} from "react-router-dom";
 import FastAverageColor from "fast-average-color";
-import addToList from "../../assets/Images/add-to-list.svg"
+import addToList from '../../assets/Images/add-to-list.svg'
+import favorite from '../../assets/Images/favorite.svg'
+import bookmark from '../../assets/Images/bookmark.svg'
+import star from '../../assets/Images/star.svg'
+import play from '../../assets/Images/play.svg'
 import axios from "axios";
 import './MovieInfo.css'
 
@@ -69,6 +73,16 @@ const MovieInfo = () => {
                 <span className="genres">
                     • Fantasy,Action,Adventure
                 </span>
+                <ul>
+                  {
+                    film.genres.map((item) =>(
+                      <li key={item.id}>
+                        {item.id}
+                      </li>
+                      ))
+                  }
+                </ul>
+
                 <span className="runtime">
                      • {film.runtime} min
                   {credits.name}
@@ -82,13 +96,37 @@ const MovieInfo = () => {
                   <span>User <br/>
                     score</span>
                 </li>
-                <li className="addToList">
-
+                <li className="configuration chart">
                   <Link to={"/"}>
                     <img src={addToList} alt="" width={16} height={16}/>
                   </Link>
                 </li>
+                <li className="configuration chart">
+                  <Link to={"/"}>
+                    <img src={favorite} alt="" width={16} height={16}/>
+                  </Link>
+                </li>
+                <li className="configuration chart">
+                  <Link to={"/"}>
+                    <img src={bookmark} alt="" width={16} height={16}/>
+                  </Link>
+                </li>
+                <li className="configuration chart">
+                  <Link to={"/"}>
+                    <img src={star} alt="" width={16} height={16}/>
+                  </Link>
+                </li>
+                <li className="chart chart-play">
+                  <Link to={"/"}>
+                    <img src={play} alt="" width={23} height={23} color={'#fff'}/>
+                  </Link>
+                  <span>Play Trailer</span>
+                </li>
               </ul>
+              <h3 className="poster-info-box tagline">
+                {film.tagline}
+              </h3>
+              <h3 className="overview">Overview</h3>
             </div>
           </div>
         </div>
