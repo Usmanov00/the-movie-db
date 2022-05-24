@@ -234,18 +234,18 @@ const MovieInfo = () => {
           </div>
         </div>
       </div>
-      <div className="container">
-        <h2 style={{marginBottom:"20px"}}>Трейлер</h2>
-        <div className="row">
-          {
-            trailer.map(item =>
-              <div key={item.id}>
-              <ReactPlayer  url={`https://www.themoviedb.org/videos/play?key=${item.key}`} className ="col-6"/>
-              </div>
-            )
-          }
+        <div className="container">
+          <h2 style={{marginBottom:"20px"}}>Трейлер</h2>
+          <div className="row">
+            {
+              trailer.map(el =>
+                <ReactPlayer key={el.id} url={`https://www.youtube.com/watch?v=${el.key}`} className ="col-6"/>
+              )
+            }
+          </div>
+
         </div>
-      </div>
+
     </>
   );
 };
