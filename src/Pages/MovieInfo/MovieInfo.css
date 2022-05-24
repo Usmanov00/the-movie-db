@@ -5,6 +5,9 @@
     /*background-image:url("https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/rl49Qr4KbfTSYjXYAN8fMDIt2xS.jpg");*/
 
 }
+li {
+    list-style: none ;
+}
 
 .background-custom{
     padding: 30px 0;
@@ -18,6 +21,7 @@
 
 .poster {
     display: flex;
+    max-width: 1400px;
 }
 
 .poster-info {
@@ -55,14 +59,28 @@
     margin-right: 5px;
 }
 
+.genres {
+    display: flex;
+}
+
+.genres-item{
+    margin-left: 5px;
+    list-style: none;
+}
+
+.genres-item:last-child{
+    margin-left: 5px;
+}
+
 .runtime{
     margin-left: 5px;
+
 }
 
 .auto{
     color: #fff;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     text-align: center;
     align-items: center;
     margin-bottom: 20px;
@@ -131,6 +149,166 @@
 .overview {
     margin: 10px 0;
 }
+
+.content-wrapper {
+    max-width: 1400px;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
+   margin: 30px 40px;
+}
+
+.white-column {
+    background-color: #fff;
+    width: calc(100vw - 80px - 268px);
+    max-width: calc(1400px - 80px - 268px);
+    display: flex;
+    flex-wrap: wrap;
+    flex: 0 1 auto;
+    padding-right: 30px;
+}
+
+.white-column h3 {
+    display: block;
+    font-weight: 600;
+    font-size: 1.4em;
+}
+
+.scroller-box {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.scroller-wrapper {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    margin-left: -10px;
+    margin-top: -10px;
+    padding-bottom: 10px;
+}
+
+.people {
+    list-style-type: none;
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.person-card {
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+    border: 1px solid rgba(227, 227, 227);
+    background-color: #fff;
+    margin: 10px 4px 10px 10px;
+    padding-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    min-width: 140px;
+    width: 140px;
+}
+
+.people li a{
+    min-width: 138px;
+    width: 138px;
+    height: 175px;
+    display: block;
+}
+
+.poster-card-name {
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+.poster-card-character {
+
+}
+
+.poster-card-character {
+    padding: 0 10px 10px 10px;
+    font-size: 0.9em;
+}
+
+.right-column {
+    min-width: 260px;
+    width: 260px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+.facts {
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.social-links {
+    display: flex;
+    align-items: flex-start;
+}
+
+.social-links div {
+    height: 30px;
+}
+
+.social-link {
+    display: block;
+    font-size: 1.9em;
+    margin-right: 8px;
+
+}
+
+
+.social-link span {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1em;
+    min-height: 1em;
+    width: 1em;
+    height: 1em;
+    line-height: inherit;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: inherit;
+    box-sizing: border-box;
+}
+
+.homepage-link {
+    border-left: 1px solid #d7d7d7d7;
+    padding-left: 8px;
+}
+
+.status span{
+    margin-bottom: 20px;
+}
+
+.status div {
+    margin-bottom: 15px;
+}
+
+.status strong {
+    font-weight: 600;
+}
+
+.col-6{
+    width: 50%;
+    padding: 0 15px;
+}
+
+.youtube {
+    align-items: center;
+}
+
 
 
 

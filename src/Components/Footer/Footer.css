@@ -1,0 +1,21 @@
+footer {
+    background-color: rgba( 3,37,65) ;
+    padding: 60px 0;
+    color: white;
+}
+h2 {
+    margin-bottom: 20px;
+}
+ul li{
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+li a {
+    color: inherit;
+}
+
+
+.col-2{
+    width: 20%;
+    padding: 0 15px;
+}
