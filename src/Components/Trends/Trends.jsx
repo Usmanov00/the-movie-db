@@ -2,13 +2,13 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Link} from "react-router-dom";
 
-const Popular = () => {
-  const [popular, setPopular] = useState([])
-   const [time, setTime] = useState('day')
+const Trends = () => {
+  const [trends, setTrends] = useState([])
+  const [mediaType,setMediaType] = useState("movie")
   useEffect(() => {
-    axios(`https://api.themoviedb.org/3/trending/movie/${time}?language=ru-RUS&sort_by=popularity.desc&api_key=965e491cb037d6e93ee1d2dd3626fed2`)
-      .then((res) => setPopular(res.data.results))
-  }, [time])
+    axios(`https://api.themoviedb.org/3/discover/${mediaType}?&language=en&api_key=965e491cb037d6e93ee1d2dd3626fed2`)
+      .then((res) => setTrends(res.data.results))
+  }, [mediaType])
 
   const formatDate = (date) => {
     const month = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
@@ -21,13 +21,13 @@ const Popular = () => {
   return (
     <div className="container">
       <div className="column-header">
-        <h2>Trending</h2>
-            <button className="selector btn" onClick={() => setTime('day')}>Day</button>
-            <button className="selector btn" onClick={() => setTime('week')}>Week</button>
+        <h2>What's popular</h2>
+        <button className="selector btn" onClick={() => setMediaType('movie')}>Online</button>
+        <button className="selector btn" onClick={() => setMediaType('tv')}>On Tv</button>
       </div>
       <div className="scroller">
         {
-          popular.map((item) => (
+          trends.map((item) => (
             <div className="movie-card" key={item.id}>
               <div className="card-img">
                 <Link to={`/movie/${item.id}`}>
@@ -38,10 +38,10 @@ const Popular = () => {
                 </div>
               </div>
               <div className="card-content">
-                <Link to={`/movie/${item.id - 1}`}>
-                  <h5 className="card-title">{item.title}</h5>
+                <Link to={`/movie/${item.id}`}>
+                  <h5 className="card-title">{item.title || item.name}</h5>
                 </Link>
-                <span className="card-year">{formatDate(item.release_date)}</span>
+                <span className="card-year">{item.release_date?formatDate(item.release_date)|| formatDate(item.last_air_date): ""}</span>
               </div>
             </div>
           ))
@@ -51,4 +51,4 @@ const Popular = () => {
   );
 };
 
-export default Popular;
+export default Trends;

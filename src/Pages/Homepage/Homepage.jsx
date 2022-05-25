@@ -1,6 +1,7 @@
 import React from 'react';
 import './Homepage.css'
 import Popular from "../../Components/Popular";
+import Trends from "../../Components/Trends";
 
 
 const Homepage = () => {
@@ -27,8 +28,8 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-      <Popular/>
-      <Popular/>
+      <Trends />
+      <Popular />
     </>
   );
 };
