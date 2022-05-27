@@ -51,7 +51,7 @@ const MovieInfo = () => {
   }, [id])
 
   if (filmLoader || creditLoader || trailerLoader) {
-    return 'Loading.....'
+    return 'Loading'
   }
 
   return (
@@ -230,7 +230,8 @@ const MovieInfo = () => {
       <div className="container">
         <div className="row">
           <div className="col-6">
-            <img src={`https://www.themoviedb.org/3/movie/${id}/videos?language=ru&api_key=`} alt=""/>
+            <img src={`https://www.themoviedb.org/3/movie/${id}/videos?language=ru&api_key=${trailer.key}`} alt=""/>
+            {/*Здесь может быть ошибка в ключе*/}
           </div>
         </div>
       </div>
