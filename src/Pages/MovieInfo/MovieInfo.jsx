@@ -150,7 +150,7 @@ const MovieInfo = () => {
                 credits.cast.map((item) => (
                   <li className="person-card" key={item.id}>
                     <div>
-                      <Link to={"/"}>
+                      <Link to={`/person/${item.id}`}>
                         <img src={`https://www.themoviedb.org/t/p/w276_and_h350_face/${item.profile_path}`} alt=""/>
                       </Link>
                       <p className="poster-card-name">{item.name}</p>

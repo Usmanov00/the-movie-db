@@ -3,6 +3,7 @@ import Homepage from "./Pages/Homepage";
 import Header from "./Components/Header";
 import MovieInfo from "./Pages/MovieInfo";
 import Footer from "./Components/Footer";
+import Person from "./Pages/Person";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path={"/"} element={<Homepage/>}/>
         <Route path={"/movie/:id"} element={<MovieInfo />}/>
+        <Route path={"/person/:id"} element={<Person />}/>
       </Routes>
       <Footer />
     </BrowserRouter>

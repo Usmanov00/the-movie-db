@@ -17,6 +17,7 @@ li {
 
 .poster-wrapper-img img{
     border-radius: 8px;
+    width: 100%;
 }
 
 .poster {
@@ -152,7 +153,6 @@ li {
 
 .content-wrapper {
     max-width: 1400px;
-    width: 100%;
     display: flex;
     align-items: flex-start;
     align-content: flex-start;
