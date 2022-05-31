@@ -39,6 +39,11 @@ code {
     padding: 0 15px;
 }
 
+.col-4 {
+    width: 33.33333%;
+    padding: 0 15px;
+}
+
 .movie-card img{
     max-width: 100%;
 }

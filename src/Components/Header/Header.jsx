@@ -12,29 +12,29 @@ const Header = () => {
         <div className="header-categories">
           <div className="sd">
           <div className="header-categories-logo">
-            <Link to={"/"}>
+            <Link to="/">
               <img src={logo} alt=""/>
             </Link>
           </div>
           <div className="nav-wrapper">
             <ul className="navigation">
               <li className="navigation-item">
-                <Link to={"/"}>
+                <Link to="/">
                   Movies
                 </Link>
               </li>
               <li className="navigation-item">
-                <Link to={"/"}>
+                <Link to="/">
                   TV Shows
                 </Link>
               </li>
               <li className="navigation-item">
-                <Link to={"/"}>
+                <Link to="/people/">
                   People
                 </Link>
               </li>
               <li className="navigation-item">
-                <Link to={"/"}>
+                <Link to="/">
                   More
                 </Link>
               </li>
