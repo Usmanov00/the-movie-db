@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {Link, useParams} from "react-router-dom";
-// import FastAverageColor from "fast-average-color";
 import ReactPlayer from "react-player";
 import addToList from '../../assets/Images/add-to-list.svg'
 import favorite from '../../assets/Images/favorite.svg'
@@ -19,18 +18,11 @@ const MovieInfo = () => {
   const {id} = useParams()
   const [film, setFilm] = useState({})
   const [credits, setCredits] = useState([])
-  // const [color, setColor] = useState('')
   const [trailer, setTrailer] = useState([])
   const [filmLoader, setFilmLoader] = useState(true);
   const [creditLoader, setCreditLoader] = useState(true);
   const [trailerLoader, setTrailerLoader] = useState(true)
 
-  // function onImageLoad(e) {
-  //   new FastAverageColor().getColorAsync(e.target).then((imgColor) => {
-  //     setColor(imgColor.rgba)
-  //     setColor(`rgba(${imgColor.value.slice(0, 3).join(',')}, 0.5`)
-  //   })
-  // }
 
   useEffect(() => {
     axios(`https://api.themoviedb.org/3/movie/${id}?api_key=965e491cb037d6e93ee1d2dd3626fed2`)
@@ -63,8 +55,7 @@ const MovieInfo = () => {
             <div className="poster">
               <div className="poster-wrapper">
                 <div className="poster-wrapper-img">
-                  {/*<img onLoad={onImageLoad}*/}
-                  {/*     crossOrigin="anonymous"*/}
+                  <img
                        src={`/t/p/w600_and_h900_bestv2/${film.poster_path}`} alt=""
                        width={300}/>
                 </div>
@@ -235,17 +226,17 @@ const MovieInfo = () => {
           </div>
         </div>
       </div>
-        <div className="container">
-          <h2 style={{marginBottom:"20px"}}>Трейлер</h2>
-          <div className="row">
-            {
-              trailer.map(el =>
-                <ReactPlayer key={el.id} url={`https://www.youtube.com/watch?v=${el.key}`} className ="col-6"/>
-              )
-            }
-          </div>
-
+      <div className="container">
+        <h2 style={{marginBottom:"20px"}}>Трейлер</h2>
+        <div className="row">
+          {
+            trailer.map(el =>
+              <ReactPlayer key={el.id} url={`https://www.youtube.com/watch?v=${el.key}`} className ="col-6"/>
+            )
+          }
         </div>
+
+      </div>
 
     </>
   );
