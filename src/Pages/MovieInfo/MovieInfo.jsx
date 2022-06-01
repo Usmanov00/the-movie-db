@@ -12,6 +12,10 @@ import twitter from '../../assets/Images/twitter.svg'
 import homepage from '../../assets/Images/homepage.svg'
 import axios from "axios";
 import './MovieInfo.css'
+import {IMAGES_BASE_URL, API_BASE} from "../../Components/Constants/Constants";
+import Spinner from "../../Components/Spinner";
+
+const API_KEY = process.env.REACT_APP_APIKEY
 
 
 const MovieInfo = () => {
@@ -24,18 +28,33 @@ const MovieInfo = () => {
   const [trailerLoader, setTrailerLoader] = useState(true)
 
 
+  // const fetchData = async () => {
+  //   const film = await axios(
+  //     `${API_BASE}/movie/${id}?api_key=${API_KEY}`
+  //   )
+  //   const credits = await axios (
+  //     `${API_BASE}/movie/${id}/credits?language=ru&api_key=${API_KEY}`
+  //   )
+  //   const trailer = await axios (
+  //     `${API_BASE}/movie/${id}/videos?api_key${API_KEY}&language=en-US`
+  //   )
+  //   setFilm(film.data)
+  //   setCredits(credits.data)
+  //   setTrailer(trailer.data.results)
+  //   setIsLoading(false)
+  // }
   useEffect(() => {
-    axios(`https://api.themoviedb.org/3/movie/${id}?api_key=965e491cb037d6e93ee1d2dd3626fed2`)
+    axios(`${API_BASE}/movie/${id}?api_key=${API_KEY}`)
       .then((res) => {
         setFilm(res.data)
         setFilmLoader(false)
       })
-    axios(`https://api.themoviedb.org/3/movie/${id}/credits?language=ru&api_key=965e491cb037d6e93ee1d2dd3626fed2`)
+    axios(`${API_BASE}/movie/${id}/credits?language=ru&api_key=${API_KEY}`)
       .then((res) => {
         setCredits(res.data)
         setCreditLoader(false)
       })
-    axios(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=965e491cb037d6e93ee1d2dd3626fed2&language=en-US`)
+    axios(`${API_BASE}/movie/${id}/videos?api_key=${API_KEY}`)
       .then(({data}) => {
         setTrailer(data.results)
         setTrailerLoader(false)
@@ -43,21 +62,19 @@ const MovieInfo = () => {
   }, [id])
 
   if (filmLoader || creditLoader || trailerLoader) {
-    return 'Loading'
+    return <Spinner/>
   }
 
   return (
     <>
       <div className="background-info"
-           style={{backgroundImage: `url(/t/p/w1920_and_h800_multi_faces/${film.backdrop_path})`}}>
+           style={{backgroundImage: `url(${IMAGES_BASE_URL}/w1920_and_h800_multi_faces/${film.backdrop_path})`}}>
         <div className="background-custom" style={{backgroundColor: 'rgba(0,0,0,0.5)'}}>
           <div className="container">
             <div className="poster">
               <div className="poster-wrapper">
                 <div className="poster-wrapper-img">
-                  <img
-                       src={`/t/p/w600_and_h900_bestv2/${film.poster_path}`} alt=""
-                       width={300}/>
+                  <img src={`${IMAGES_BASE_URL}/w600_and_h900_bestv2/${film.poster_path}`} alt="" width={300}/>
                 </div>
               </div>
               <div className="poster-info">
@@ -142,7 +159,7 @@ const MovieInfo = () => {
                   <li className="person-card" key={item.id}>
                     <div>
                       <Link to={`/person/${item.id}`}>
-                        <img src={`https://www.themoviedb.org/t/p/w276_and_h350_face/${item.profile_path}`} alt=""/>
+                        <img src={`${IMAGES_BASE_URL}/w276_and_h350_face/${item.profile_path}`} alt=""/>
                       </Link>
                       <p className="poster-card-name">{item.name}</p>
                       <p className="poster-card-character">{item.character}</p>
@@ -221,17 +238,16 @@ const MovieInfo = () => {
       <div className="container">
         <div className="row">
           <div className="col-6">
-            <img src={`https://www.themoviedb.org/3/movie/${id}/videos?language=ru&api_key=${trailer.key}`} alt=""/>
-            {/*Здесь может быть ошибка в ключе*/}
+            <img src={`${API_BASE}/movie/${id}/videos?language=ru&api_key=${trailer.key}`} alt=""/>
           </div>
         </div>
       </div>
       <div className="container">
-        <h2 style={{marginBottom:"20px"}}>Трейлер</h2>
+        <h2 style={{marginBottom: "20px"}}>Трейлер</h2>
         <div className="row">
           {
             trailer.map(el =>
-              <ReactPlayer key={el.id} url={`https://www.youtube.com/watch?v=${el.key}`} className ="col-6"/>
+              <ReactPlayer key={el.id} url={`https://www.youtube.com/watch?v=${el.key}`} className="col-6"/>
             )
           }
         </div>

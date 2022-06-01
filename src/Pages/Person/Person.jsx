@@ -5,23 +5,25 @@ import './Person.css'
 import instagram from '../../assets/Images/instagram.svg'
 import twitter from '../../assets/Images/twitter.svg'
 import facebook from '../../assets/Images/facebook.svg'
+import {API_BASE, IMAGES_BASE_URL} from "../../Components/Constants/Constants";
 
 const Person = () => {
   const {id} = useParams()
   const [person, setPerson] = useState({})
   const [isLoading, setIsLoading] = useState(true)
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const fetchData = async () => {
     const person = await axios(
-      `https://api.themoviedb.org/3/person/${id}?api_key=965e491cb037d6e93ee1d2dd3626fed2`
+      `${API_BASE}/person/${id}?api_key=${process.env.REACT_APP_APIKEY}`
     )
     setPerson(person.data)
     setIsLoading(false)
   }
 
   useEffect(() => {
-    fetchData()
-  }, [id])
+    fetchData().then()//ЗДЕСЬ МОЖЕТ БЫТЬ ОШИБКА!!! ИЗ-ЗА then
+  }, [fetchData, id]) //ЗДЕСЬ МОЖЕТ БЫТЬ ОШИБКА!!! ИЗ-ЗА fetchData
 
   if (isLoading) {
     return 'Loading...'
@@ -33,7 +35,7 @@ const Person = () => {
         <div className="gray-column">
           <div className="images-content">
             <div className="images">
-              <img src={`/t/p/w600_and_h900_bestv2/${person.profile_path}`} alt=""/>
+              <img src={`${IMAGES_BASE_URL}/w600_and_h900_bestv2/${person.profile_path}`} alt=""/>
             </div>
           </div>
          <div className="column">

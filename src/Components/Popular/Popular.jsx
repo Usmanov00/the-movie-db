@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {API_BASE, IMAGES_BASE_URL} from "../Constants/Constants";
 
 const Popular = () => {
   const [popular, setPopular] = useState([])
    const [time, setTime] = useState('day')
   useEffect(() => {
-    axios(`https://api.themoviedb.org/3/trending/movie/${time}?language=ru-RUS&sort_by=popularity.desc&api_key=965e491cb037d6e93ee1d2dd3626fed2`)
+    axios(`${API_BASE}/trending/movie/${time}?language=ru-RUS&sort_by=popularity.desc&api_key=${process.env.REACT_APP_APIKEY}`)
       .then((res) => setPopular(res.data.results))
   }, [time])
 
@@ -31,7 +32,7 @@ const Popular = () => {
             <div className="movie-card" key={item.id}>
               <div className="card-img">
                 <Link to={`/movie/${item.id}`}>
-                  <img src={`https://www.themoviedb.org/t/p/w440_and_h660_face${item.poster_path}`} alt=""/>
+                  <img src={`${IMAGES_BASE_URL}/w440_and_h660_face${item.poster_path}`} alt=""/>
                 </Link>
                 <div className="consensus">
                   {item.vote_average}

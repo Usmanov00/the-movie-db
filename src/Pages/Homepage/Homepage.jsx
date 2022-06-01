@@ -1,11 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { useNavigate } from "react-router-dom";
 import './Homepage.css'
 import Popular from "../../Components/Popular";
 import Trends from "../../Components/Trends";
 
 
 const Homepage = () => {
-
+  let navigate = useNavigate();
+  const [search,setSearch] = useState("")
+  const handlerChange = (e) => setSearch((e.target.value))
+  const handlerSearch = (e) => {
+    if(e.key === "Enter") {
+      navigate(`/search/${search}`)
+      setSearch("")
+    }
+  }
   return (
     <>
       <div className="homepage">
@@ -19,9 +28,9 @@ const Homepage = () => {
               <div className="search">
                 <form action="">
                   <label>
-                    <input type="text" placeholder="Search for a movie, tv show, person....."/>
+                    <input type="text" onKeyPress ={handlerSearch} onChange={handlerChange} placeholder="Search for a movie, tv show, person....."/>
                   </label>
-                  <input type="submit" value="Search"/>
+                  <input type="submit" value="Search" onClick={handlerSearch}/>
                 </form>
               </div>
             </div>
