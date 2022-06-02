@@ -1,0 +1,62 @@
+.selector-wrap {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.selector-wrap h2 {
+    margin-bottom: 0;
+}
+
+.selector-btn {
+    border-radius: 30px;
+    display: flex;
+    cursor: pointer;
+}
+
+
+
+.selector {
+    align-content: center;
+    align-items: stretch;
+    border: 1px solid #032541;
+    height: 30px;
+    justify-content: flex-start;
+    margin-left: 20px;
+}
+.selector-btn {
+    align-items: center;
+    background-color: #fff;
+    border: none;
+    color: #032541;
+    font-size: 18px;
+    font-weight: 600;
+    justify-content: center;
+    margin-bottom: 0;
+    padding: 4px 20px;
+    white-space: nowrap;
+}
+.selector, .selector-btn {
+    border-radius: 30px;
+    display: flex;
+}
+[type=button], [type=reset], [type=submit], button {
+    -webkit-appearance: button;
+}
+button, select {
+    text-transform: none;
+}
+button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+}
+button {
+    border-radius: 0;
+}
+
+.active {
+    background-color: #032541;
+    color: #fff;
+}

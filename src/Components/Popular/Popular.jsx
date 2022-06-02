@@ -5,11 +5,12 @@ import {API_BASE, IMAGES_BASE_URL} from "../Constants/Constants";
 
 const Popular = () => {
   const [popular, setPopular] = useState([])
-   const [time, setTime] = useState('day')
+  const [mediaType, setMediaType] = useState('week')
+  const [active, setActive] = useState(false)
   useEffect(() => {
-    axios(`${API_BASE}/trending/movie/${time}?language=ru-RUS&sort_by=popularity.desc&api_key=${process.env.REACT_APP_APIKEY}`)
+    axios(`${API_BASE}/trending/movie/${mediaType}?language=ru-RUS&sort_by=popularity.desc&api_key=${process.env.REACT_APP_APIKEY}`)
       .then((res) => setPopular(res.data.results))
-  }, [time])
+  }, [mediaType])
 
   const formatDate = (date) => {
     const month = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
@@ -22,9 +23,17 @@ const Popular = () => {
   return (
     <div className="container">
       <div className="column-header">
-        <h2>Trending</h2>
-            <button className="selector btn" onClick={() => setTime('day')}>Day</button>
-            <button className="selector btn" onClick={() => setTime('week')}>Week</button>
+        <div className="selector-wrap">
+          <h2>Trending</h2>
+          <div className="selector">
+            <button className={active ? "selector-btn active" : "selector-btn"}
+                    onClick={() => setActive(!active) || setMediaType('day')}>Day
+            </button>
+            <button className={!active ? "selector-btn active" : "selector-btn"}
+                    onClick={() => setActive(!active) || setMediaType('week')}>Week
+            </button>
+          </div>
+        </div>
       </div>
       <div className="scroller">
         {

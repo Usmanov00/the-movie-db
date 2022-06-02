@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {Link} from "react-router-dom";
+import './Trends.css'
 
 const Trends = () => {
   const [trends, setTrends] = useState([])
-  const [mediaType,setMediaType] = useState("movie")
+  const [mediaType, setMediaType] = useState("movie")
+  const [active, setActive] = useState(false)
   useEffect(() => {
     axios(`https://api.themoviedb.org/3/discover/${mediaType}?&language=en&api_key=965e491cb037d6e93ee1d2dd3626fed2`)
       .then((res) => setTrends(res.data.results))
@@ -21,9 +23,25 @@ const Trends = () => {
   return (
     <div className="container">
       <div className="column-header">
-        <h2>What's popular</h2>
-        <button className="selector btn" onClick={() => setMediaType('movie')}>Online</button>
-        <button className="selector btn" onClick={() => setMediaType('tv')}>On Tv</button>
+        <div className="selector-wrap">
+          <h2>What's popular</h2>
+          {/*<div className="selector">*/}
+          {/*  <button className="selector-btn" onClick={() => setMediaType('movie')}>Online</button>*/}
+          {/*  <button className="selector-btn" onClick={() => setMediaType('tv')}>On Tv</button>*/}
+          {/*</div>*/}
+          <div className="selector">
+            <button
+              className={active?"selector-btn active":"selector-btn"}
+              onClick={() => setActive(!active) || setMediaType('movie')}
+            >Streaming
+            </button>
+            <button
+              className={!active?"selector-btn active":"selector-btn"}
+              onClick={() => setActive(!active) || setMediaType('tv')}
+            >On TV
+            </button>
+          </div>
+        </div>
       </div>
       <div className="scroller">
         {
@@ -41,7 +59,8 @@ const Trends = () => {
                 <Link to={`/movie/${item.id}`}>
                   <h5 className="card-title">{item.title || item.name}</h5>
                 </Link>
-                <span className="card-year">{item.release_date?formatDate(item.release_date)|| formatDate(item.last_air_date): ""}</span>
+                <span
+                  className="card-year">{item.release_date ? formatDate(item.release_date) || formatDate(item.last_air_date) : ""}</span>
               </div>
             </div>
           ))
