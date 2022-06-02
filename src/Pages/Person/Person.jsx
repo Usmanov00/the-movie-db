@@ -22,7 +22,7 @@ const Person = () => {
   }
 
   useEffect(() => {
-    fetchData().then()//ЗДЕСЬ МОЖЕТ БЫТЬ ОШИБКА!!! ИЗ-ЗА then
+    fetchData()//ЗДЕСЬ МОЖЕТ БЫТЬ ОШИБКА!!! ИЗ-ЗА then
   }, [fetchData, id]) //ЗДЕСЬ МОЖЕТ БЫТЬ ОШИБКА!!! ИЗ-ЗА fetchData
 
   if (isLoading) {
